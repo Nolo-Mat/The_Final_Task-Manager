@@ -4,28 +4,28 @@ This is a simple task manager application built using Django.
 
 ## Installation
 
-    Clone the repository to your local machine:
+Clone the repository to your local machine:
     
-git clone https://github.com/your-username/task-manager.git
+    git clone https://github.com/your-username/task-manager.git
 
-    Install the required dependencies:
+Install the required dependencies:
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
-    Set up the database by running the following commands:
+Set up the database by running the following commands:
 
-python manage.py makemigrations
-python manage.py migrate
+    python manage.py makemigrations
+    python manage.py migrate
 
-    Create a superuser account:
+Create a superuser account:
 
-python manage.py createsuperuser
+    python manage.py createsuperuser
 
-    Run the development server:
+Run the development server:
 
     python manage.py runserver
 
-    Access the application by visiting http://localhost:8000 in your web browser.
+Access the application by visiting http://localhost:8000 in your web browser.
 
 ## Usage
 

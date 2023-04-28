@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+        <br><br><h3 style="align-content: center">My Task</h3><br>
+        <div class="backdrop">
+
+         <div class="container  bg-white shadow-md py-5 form-layout">
+             <h2>{{ task.title }}</h2><br>
+             {{ task.content }}<br><br>
+
+             <a href="{% url 'taskly:update_task' task.id %}" class="btn btn-primary btn-lg">Update</a>
+             <a href="{% url 'taskly:delete_task' task.id %}" class="btn btn-primary btn-lg">Delete</a>
+
+
+         </div>
+
+         <br><br>
+        </div>
+             <br><br>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+<html lang="en">
+
+<body>
+{% block content %}
+<!--Register-->
+<div class="container py-5">
+	<h1>Register</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{{ register_form|crispy }}
+		<button class="btn btn-primary" type="submit">Register</button>
+	</form>
+	<p class="text-center">Do you already have an account? Then <a href="{% url 'taskly:login' %}">login</a> instead.</p>
+</div>
+
+{% endblock content %}
+</body>
+</html>

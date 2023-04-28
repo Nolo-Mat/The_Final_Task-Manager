@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container py-5">
+        <h1>Login Section</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ login_form.as_p }}
+            <button class="btn btn-primary" type="submit">LOGIN</button>
+        </form>
+        <p class="text-center">Don't have an account yet? Then register <a href="{% url 'taskly:register' %}">here!</a> </p>
+    </div>
+{% endblock content %}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Taskly..... </h1>
+<h2>A Home For Your Tasks</h2>
+
+    <br><br>
+    <div class="backdrop">
+        <h1>Welcome to Taskly  {{ username }}</h1>
+            <div class="backdrop">
+
+            </div>
+    </div>
+    <br>
+
+<a href="{% url 'taskly:create_task' %}" class="btn btn-primary mb-2">Add Task</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Task Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Due Date</th>
+            <th>Date Posted</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>{{ task.content }}</td>
+            <td>
+                {% if task.due_date %}
+                    {% if task.due_date < task.date_posted %}
+                        Overdue
+                    {% else %}
+                        Pending
+                    {% endif %}
+                {% else %}
+                    No Due Date
+                {% endif %}
+            </td>
+            <td>{{ task.due_date }}</td>
+            <td>{{ task.date_posted }}</td>
+
+            <td>
+                <a href="{% url 'taskly:view_task' task.pk %}" class="btn btn-secondary btn-sm">View</a>
+                <a href="{% url 'taskly:update_task' task.pk %}" class="btn btn-primary btn-sm">Edit</a>
+                <form action="{% url 'taskly:delete_task' task.pk %}" method="POST" class="d-inline">
+                    {% csrf_token %}
+                    <a href="{% url 'taskly:delete_task' task.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No tasks found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+
+</html>

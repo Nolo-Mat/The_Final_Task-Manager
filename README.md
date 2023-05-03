@@ -36,4 +36,4 @@ To create a task, log in as a superuser and navigate to the admin panel (http://
 To view all tasks, visit http://localhost:8000/tasks in your web browser.
 Credits
 
-This application was created by Your Name. Feel free to fork the repository and make any changes you'd like.
+This application was created by Lehlohonolo Matlala. Feel free to fork the repository and make any changes you'd like.

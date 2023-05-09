@@ -14,7 +14,7 @@ urlpatterns = [
     path('logout/', views.LogoutView.as_view(), name='logout'),
 
     # An url for logging in, links in views and login.html
-    path("login/", views.login_view, name="login"),
+    path("login/", views.LoginView, name="login"),
 
     # An url for registering, links in views and register.html
     path('register/', views.register, name="register"),

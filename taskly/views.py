@@ -16,7 +16,7 @@ def index(request):
     return render(request, 'index.html', {'tasks':tasks})
 
 
-def login_view(request):
+def LoginView(request):
     """
     If the request is a POST request, then we create a LoginForm object with the request and the POST
     data.
@@ -84,9 +84,6 @@ def register(request):
     return render(request=request, template_name="register.html", context={"register_form": form})
 
 
-
-
-
 def create_task(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
@@ -100,9 +97,6 @@ def create_task(request):
 
     context = {'form': form}
     return render(request, 'createTask.html', context)
-
-
-
 
 
 @login_required(login_url='my_login')
@@ -129,21 +123,6 @@ def update_task(request, pk):
         form = TaskForm(instance=task)
     context = {'form': form, 'task': task}
     return render(request, 'updateTask.html', context=context)
-
-
-# @login_required(login_url='my_login')
-# def delete_task(request, pk):
-#     # we are fetching our tasks from the database with the primary key
-#     task = Task.objects.get(id=pk)
-#     if request.method == 'POST':
-#         # if selected operation then we delete
-#         task.delete()
-#         # if deleted then we would like to go to view task
-#         return redirect('taskly:index')
-#
-#     context = {'task': task}
-#     return render(request, 'deleteTask.html', context=context)
-
 
 
 @login_required(login_url='my_login')

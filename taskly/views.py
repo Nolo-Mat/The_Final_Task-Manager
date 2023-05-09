@@ -84,6 +84,7 @@ def register(request):
     return render(request=request, template_name="register.html", context={"register_form": form})
 
 
+@login_required(login_url='my_login')
 def create_task(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)

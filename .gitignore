@@ -1,0 +1,36 @@
+# Django-related files and directories
+*.pyc
+__pycache__/
+*.sqlite3
+*.env
+
+# Virtual environment
+venv/
+.env
+
+# IDE-specific files
+.idea/
+.vscode/
+
+# System files
+.DS_Store
+
+# Log files
+logs/
+
+# Media and static files
+media/
+static/
+
+# Ignore database configuration files
+database.ini
+
+# Ignore sensitive or private files
+secrets.txt
+credentials.json
+
+# Ignore migration files (if using Django's built-in migration system)
+*/migrations/
+
+# Ignore local settings file (if you have separate settings for development)
+task_manager/local_settings.py

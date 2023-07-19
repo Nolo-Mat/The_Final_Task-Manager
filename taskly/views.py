@@ -84,8 +84,20 @@ def register(request):
     return render(request=request, template_name="register.html", context={"register_form": form})
 
 
+
+    
 @login_required(login_url='my_login')
 def create_task(request):
+    """
+    This function creates a new task for a logged-in user using a form and saves it to the database.
+
+    :param request: The HTTP request object that contains information about the current request,
+    including the user making the request, the HTTP method used (GET, POST, etc.), and any data
+    submitted with the request
+    :return: This function returns a rendered HTML template named 'createTask.html' with a context
+    dictionary containing a TaskForm object. If the request method is POST and the form is valid, it
+    creates a new task object with the user who made the request and redirects to the dashboard page.
+    """
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
@@ -102,6 +114,21 @@ def create_task(request):
 
 @login_required(login_url='my_login')
 def view_task(request, pk):
+    """
+    This is a Python function that requires login authentication to view a specific task and renders it
+    on a web page.
+    
+    :param request: The HTTP request object that contains information about the current request, such as
+    the user making the request, the HTTP method used, and any data submitted with the request
+    :param pk: pk stands for "primary key" and is a unique identifier for a specific instance of a model
+    in a database. In this case, it is used to retrieve a specific Task object from the database based
+    on its primary key value
+    :return: The view_task function is returning an HTTP response that renders the 'viewTask.html'
+    template with the context dictionary containing the task object retrieved using the pk parameter.
+    The function is decorated with the login_required decorator, which means that the user must be
+    authenticated to access this view. If the user is not authenticated, they will be redirected to the
+    'my_login' URL.
+    """
     task = get_object_or_404(Task, pk=pk)
     context = {'task': task}
     return render(request, 'viewTask.html', context=context)
@@ -109,6 +136,17 @@ def view_task(request, pk):
 
 @login_required(login_url='my_login')
 def update_task(request, pk):
+    """
+    This function updates a task instance in the database and redirects to the view task page.
+    
+    :param request: The HTTP request object that contains information about the current request, such as
+    the user making the request and any data submitted with the request
+    :param pk: pk stands for "primary key" and is used to identify a specific instance of a model in the
+    database. In this case, it is used to identify the specific task that needs to be updated
+    :return: a rendered HTML template 'updateTask.html' with a context dictionary containing a form and
+    a task object. If the request method is POST and the form is valid, the function redirects to the
+    'view_task' view with the primary key of the updated task as a parameter.
+    """
     task = Task.objects.get(id=pk)
     # this allows us to work on the specific instance of the task (code below)
 
@@ -128,6 +166,17 @@ def update_task(request, pk):
 
 @login_required(login_url='my_login')
 def delete_task(request, pk):
+    """
+    This function deletes a task object from the database and redirects to the dashboard page.
+    
+    :param request: The HTTP request object that contains information about the current request, such as
+    the user making the request, the HTTP method used, and any data submitted with the request
+    :param pk: pk stands for primary key, which is a unique identifier for each record in a database
+    table. In this case, it is used to fetch the specific task object from the database that the user
+    wants to delete
+    :return: a rendered HTML template 'deleteTask.html' with the context of the task object. If the
+    request method is POST, the function deletes the task object and redirects to the 'dashboard' page.
+    """
     # Fetching the task object from the database using the primary key
     task = get_object_or_404(Task, pk=pk)
 

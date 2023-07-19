@@ -14,6 +14,10 @@ sys.path.insert(0, os.path.abspath('..'))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'taskmanager.settings'
 django.setup()
 
+# The root document.
+master_doc = 'index'
+
+
 project = 'taskmanager2'
 copyright = '2023, Nolo Matlala'
 author = 'Nolo Matlala'
@@ -24,6 +28,8 @@ release = '0.0.01'
 
 extensions = ['sphinx.ext.autodoc',
 'sphinx.ext.viewcode',
+'sphinx.ext.doctest',
+'sphinx.ext.intersphinx',
 'sphinx.ext.napoleon'
 ]
 

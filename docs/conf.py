@@ -6,6 +6,14 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+import os
+import sys
+import django
+
+sys.path.insert(0, os.path.abspath('..'))
+os.environ['DJANGO_SETTINGS_MODULE'] = 'taskmanager.settings'
+django.setup()
+
 project = 'taskmanager2'
 copyright = '2023, Nolo Matlala'
 author = 'Nolo Matlala'
@@ -14,7 +22,10 @@ release = '0.0.01'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = ['sphinx.ext.autodoc',
+'sphinx.ext.viewcode',
+'sphinx.ext.napoleon'
+]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
